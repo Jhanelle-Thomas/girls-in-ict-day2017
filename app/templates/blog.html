@@ -1,0 +1,34 @@
+{% extends "base.html" %}
+
+{% block css %} 
+<link rel="css" type="text/css" href="{{ url_for('static', filename = 'css/blog.css') }}">
+{% endblock%}
+
+{% block main %}
+<div class="container-fluid">
+  <div class="jumbotron">
+    <div class="row">
+      <div class="col-xs-10">
+        <h1 class="text-center"> Protect Wi Beaches</h1>
+        <h2 class ="text-left"> Dutty Gully</h2>
+        <img class ="smaller-image" src="http://loopassets.s3.amazonaws.com/styles/carousel_large/s3/thumbnails/image/grants-pen-gully-kids-aug13.jpg?itok=BIje6zn-" alt="gully.">
+        <p>Garbage from gullies will flow into our seas. It's important we refrain from polluting them. Let's clean them up and keep them clean</p>
+        <h2 class ="text-left"> Beach Party!</h2>
+       <img class ="smaller-image" src="{{ url_for('static', filename = 'images/6.jpg') }}"  alt="beach party. "style="width:100%" > 
+        <img class ="smaller-image" src="https://ak2.picdn.net/shutterstock/videos/15358177/thumb/1.jpg?i10c=img.resize(height:160)" alt="beach garbage.">  
+ <p>We love beach parties but remember not to litter the shore with plastic red cups. </p>     
+        <h2 class ="text-left">Preseve the Beach </h2>
+        <img src="http://i2.cdn.turner.com/cnn/dam/assets/140619115135-great-barrier-reef-split-image-story-top.jpg" alt="beach garbage.">  
+        <ul>
+          <li><strong>On the sand: </strong>-When walking on sand dunes, be careful of any grasses and plants growing there. Living plants help hold sand in place. Dead plants and seaweed provide fertilizer. Both should be left alone. </li>
+          <li><strong>In the shallows</strong>-On rocky shores, the shallow "tidepools" that are exposed when the tide is out, can be a great place to look for interesting marine life. But be careful not to trample on these fragile critters and their homes. Look, but don't touch. </li>
+       
+          <li><strong>Near the reef:</strong> When snorkeling or diving, never touch the reef! Corals and other animals are fragile and easily killed by a grasping hand or careless flipper. Also never feed or handle marine animals. </li> 
+     </ul> 
+      </div>
+    </div>
+  </div>
+</div>
+
+<h3>Visit NEPA and get involved: <a href="http://nepa.gov.jm/" target="_blank">NEPA</a>.</h3>
+{% endblock %} 

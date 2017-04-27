@@ -1,0 +1,10 @@
+Flask
+requests
+beautifulsoup4
+Flask-WTF
+Flask-Login
+Flask-SQLAlchemy
+Flask-Migrate
+psycopg2
+Werkzeug
+MySQL

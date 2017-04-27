@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+
+{% block css %} 
+<link rel="css" type="text/css" href="{{ url_for('static', filename = 'css/showcase.css') }}">
+{% endblock%}
+
+{% block js %} 
+<script type="text/javascript" src="{{ url_for('static', filename = 'js/showcase.js') }}"></script>
+{% endblock%}
+
+
+{% block main %}
+<h1 class="page-header"> Protect Wi Beaches</h1>
+{% with messages = get_flashed_messages() %}
+  {% if messages %}
+    <div class="alert alert-success">
+      <ul class="flashes">
+      {% for message in messages %}
+        <li>{{ message }}</li>
+      {% endfor %}
+      </ul>
+    </div>
+  {% endif %}
+{% endwith %}
+
+  <div class="slideshow-container">
+  <img class="mySlides" src="{{ url_for('static', filename = 'images/1.jpg') }}" style="width:100%">
+  <img class="mySlides" src="{{ url_for('static', filename = 'images/2.jpg') }}" style="width:100%">
+  <img class="mySlides" src="{{ url_for('static', filename = 'images/3.jpg') }}" style="width:100%">
+  <img class="mySlides" src="{{ url_for('static', filename = 'images/4.jpg') }}" style="width:100%">
+  <img class="mySlides" src="{{ url_for('static', filename = 'images/5.jpg') }}" style="width:100%">
+</div>
+<br>
+
+<div style="text-align:center">
+  <span class="dot" onclick="currentSlide(1)"></span> 
+  <span class="dot" onclick="currentSlide(2)"></span> 
+  <span class="dot" onclick="currentSlide(3)"></span> 
+  <span class="dot" onclick="currentSlide(4)"></span> 
+  <span class="dot" onclick="currentSlide(5)"></span> 
+</div>
+{% endblock %}

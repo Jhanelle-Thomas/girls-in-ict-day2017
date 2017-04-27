@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+
+{% block main %}
+<h2>Forum</h2>
+{% for message in messages %}
+<hr/>
+<div>
+    <strong>{{ message.title }}</strong> <br/>
+    {{ message.author }} @
+    {{ message.time }}<br/>
+    {{ message.message }}<br/>
+</div>
+<hr/>
+<br/>
+{% endfor %}
+<hr>
+{% include 'message.html' %}
+{% endblock %}

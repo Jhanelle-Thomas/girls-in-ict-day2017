@@ -1,0 +1,111 @@
+{% extends "base.html" %}
+
+{% block css %} 
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+{% endblock%}
+
+{% block main %}
+<div class="container-fluid text-center">    
+  <div class="row content">
+    <div class="col-sm-10 text-center"> 
+      <br />
+      <h1>Clean Up Jamaica</h1>
+      
+      <div id="map" style="width: 750px; height: 400px; margin-left: auto;
+        margin-right: auto;"></div>
+      </br>
+      </br>
+    <div id="map"></div>
+    </div>
+    </div>
+  </div>
+</div>
+{% endblock %}
+   
+
+{% block js %} 
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<script async defer src="http://maps.google.com/maps/api/js?key=AIzaSyB3VTckX2U4O2AA5ivsNd9dMQJBDtLjtIA&libraries=geometry,places&region=JM&callback=initMap" type="text/javascript"></script>
+<script type="text/javascript">
+
+var locations = [ 
+          
+          ['Runaway Bay Beach', 18.4645, 77.3228, 10],
+          ['Bluefields Beach', 18.1744, -78.0323, 9],
+          ["Doctor's Cave Beach", 18.4867, -77.9289, 8],
+          ['San San Beach', 18.1733, -76.3949, 7],
+          ['Winnifred Beach', 18.1699, -76.3757, 6],
+          ['Hellshire Beach', 17.8979, -76.8941, 5],
+          ['University West Indies, Mona', 18.0032, -76.7452, 4],
+          ['Jamaica Observer Limited', 17.9989, -76.7980, 3],
+          ['Scotia Bank Ligueanea', 18.0201, -76.7664, 2],
+          ['NCB Half Way Tree', 18.0104, -76.7973, 1],
+        ];
+
+
+
+
+      // Note: This example requires that you consent to location sharing when
+      // prompted by your browser. If you see the error "The Geolocation service
+      // failed.", it means you probably did not give permission for the browser to
+      // locate you.
+      var map, infoWindow;
+      function initMap() {
+        map = new google.maps.Map(document.getElementById('map'), {
+          zoom: 9,
+          center: new google.maps.LatLng(18.1096,-77.2975),
+        });
+        infoWindow = new google.maps.InfoWindow;
+
+
+var marker, i;
+
+        for (i = 0; i < locations.length; i++) {  
+          marker = new google.maps.Marker({
+            position: new google.maps.LatLng(locations[i][1], locations[i][2]),
+            map: map
+          });
+
+          google.maps.event.addListener(marker, 'click', (function(marker, i) {
+            return function() {
+              infowindow.setContent(locations[i][0]);
+              infowindow.open(map, marker);
+            }
+          })(marker, i));
+        }
+
+
+
+
+        // Try HTML5 geolocation.
+        if (navigator.geolocation) {
+          navigator.geolocation.getCurrentPosition(function(position) {
+            var pos = {
+              lat: position.coords.latitude,
+              lng: position.coords.longitude
+            };
+
+            infoWindow.setPosition(pos);
+            infoWindow.setContent('Current Location Found.');
+            infoWindow.open(map);
+            map.setCenter(pos);
+          }, function() {
+            handleLocationError(true, infoWindow, map.getCenter());
+          });
+        } else {
+          // Browser doesn't support Geolocation
+          handleLocationError(false, infoWindow, map.getCenter());
+        }
+      }
+
+      function handleLocationError(browserHasGeolocation, infoWindow, pos) {
+        infoWindow.setPosition(pos);
+        infoWindow.setContent(browserHasGeolocation ?
+                              'Error: The Geolocation service failed.' :
+                              'Error: Your browser doesn\'t support geolocation.');
+        infoWindow.open(map);
+      }
+    </script>
+
+{% endblock%}

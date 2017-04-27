@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+
+{% block css %} 
+<link rel="css" type="text/css" href="{{ url_for('static', filename = 'css/dashboard.css') }}">
+{% endblock%}
+
+{% block js %} 
+<script type="text/javascript" src="{{ url_for('static', filename = 'js/dashboard.js') }}"></script>
+{% endblock%}
+
+{% block main %}
+<div style="width:100%; background-color:lightblue; padding: 20px">
+<hr>
+<img src="{{ url_for('static', filename = 'images/babymoana.jpg') }}" style="width:300px;height:300px;border: 3px solid black">
+<h3>First Name: Moana</h3>
+<h3>Last Name: Waialiki</h3>
+<h3>Username: Hei Hei</h3>
+<hr>
+<h2>Trash Progress</h2>
+<hr>
+<div class="range-slider">
+  <input class="range-slider__range" type="range" value="10" min="0" max="100">
+  <span class="range-slider__value">0</span>
+</div>
+<hr>
+<h3>Badges</h3>
+<hr>
+<img class="mySlides" src="{{ url_for('static', filename = 'images/7.png') }}" style="width:100px;height:100px">
+</div>
+{% endblock %}
